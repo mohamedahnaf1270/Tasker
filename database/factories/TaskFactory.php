@@ -28,7 +28,7 @@ class TaskFactory extends Factory
             'project_id'=>Project::Factory(),
             'reporter_id'=>User::Factory(),
             'user_id'=>User::Factory(),
-            'status'=>"completed",
+            'status'=>$this->faker->randomElement(['to-do', 'in-progress', 'backlog', 'on-hold','done']),
         ];
     }
 }

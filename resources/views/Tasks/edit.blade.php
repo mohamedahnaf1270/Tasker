@@ -16,7 +16,7 @@
                 <option value="in-progress" @if($Task->status=="in-progress")selected @endif>In-Progress</option>
                 <option value="backlog" @if($Task->status=="backlog")selected @endif>Backlog</option>
                 <option value="done" @if($Task->status=="done")selected @endif>Done</option>
-                <option value="on-hold" @if($Task->status=="oh-hold")selected @endif>On-hold</option>
+                <option value="on-hold" @if($Task->status=="on-hold")selected @endif>On-hold</option>
             </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
