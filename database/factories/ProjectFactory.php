@@ -23,9 +23,10 @@ class ProjectFactory extends Factory
      */
     public function definition()
     {
-        $now=Carbon::now();
-        $status=['pending','ongoing','completed','cancelled'];
-        $color=['primary','success','danger','warning'];
+        $start_date=Carbon::now();
+        $end_date=Carbon::now();
+        $status=['pending','on-going','completed','cancelled'];
+        // $color=['primary','success','danger','warning'];
         /*if ($status=='pending'){
             echo 'secondary';
         }
@@ -46,13 +47,11 @@ class ProjectFactory extends Factory
         return [
             'title'=>$this->faker->sentence(3),
             'details'=>$this->faker->paragraph(2),
-            'start_date'=>$now->addDays(rand(1,5)),
-            'end_date'=>$now->addDays(rand(55,99)),
+            'start_date'=>$start_date->addDays(rand(1,5)),
+            'end_date'=>$end_date->addDays(rand(55,99)),
             'status'=>$status[rand(0,3)],
-            'color'=>$color[rand(0,3)],
-            'projectmanager_id'=>User::factory(),
-            'updated_at'=>$now,
-            'created_at'=>$now
+            // 'color'=>$color[rand(0,3)],
+            'projectmanager_id'=>User::factory()
         ];
     }
 }

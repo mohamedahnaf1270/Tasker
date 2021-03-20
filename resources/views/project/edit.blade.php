@@ -23,10 +23,10 @@
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Status</label>
     <select name="status" class="form-control" id="exampleFormControlSelect1">
-      <option @if($project->status=="pending")selected @endif>Pending</option>
-      <option @if($project->status=="ongoing")selected @endif>Ongoing</option>
-      <option @if($project->status=="completed")selected @endif>Completed</option>
-      <option @if($project->status=="cancelled")selected @endif>Cancelled</option>
+      <option value="pending" @if($project->status=="pending")selected @endif>Pending</option>
+      <option value="on-going" @if($project->status=="ongoing")selected @endif>Ongoing</option>
+      <option value="completed" @if($project->status=="completed")selected @endif>Completed</option>
+      <option value="cancelled" @if($project->status=="cancelled")selected @endif>Cancelled</option>
     </select>
   </div>
   <div class="mb-3">
@@ -38,13 +38,13 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Color</label>
+    {{-- <label for="exampleFormControlInput1" class="form-label">Color</label>
     <select name="color" class="form-control" id="exampleFormControlSelect1">
         <option @if($project->color=="primary")selected @endif>primary</option>
         <option @if($project->color=="warning")selected @endif>warning</option>
         <option @if($project->color=="danger")selected @endif>danger</option>
         <option @if($project->color=="success")selected @endif>success</option>
-      </select>
+      </select> --}}
       <div class="mt-3">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>

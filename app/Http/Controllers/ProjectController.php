@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -16,6 +17,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects=Project::paginate(50);
+        $projects->transform(function($project){
+            return $this->setProjectColor($project);
+        });
         return view('project.index')->with(compact('projects'));
     }
 
@@ -46,7 +50,7 @@ class ProjectController extends Controller
         $newprojects->end_date =$request->end_date;
         $newprojects->status =$request->status;
         $newprojects->projectmanager_id =$request->projectmanager_id;
-        $newprojects->color =$request->color;
+        // $newprojects->color =$request->color;
         $newprojects->save();
 
         return redirect()->route('project.index');
@@ -61,6 +65,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project=Project::with('tasks.user')->find($id);
+        $project = $this->setProjectColor($project);
         $project->taskGroup=$project->tasks->groupBy('status');
         return view('project.show')->with(compact('project'));
     }
@@ -94,7 +99,7 @@ class ProjectController extends Controller
         $projects->end_date =$request->end_date;
         $projects->status =$request->status;
         $projects->projectmanager_id =$request->projectmanager_id;
-        $projects->color =$request->color;
+        // $projects->color =$request->color;
         $projects->save();
 
         return redirect()->route('project.index');
@@ -110,5 +115,23 @@ class ProjectController extends Controller
     {
         project::destroy($id);
         return redirect()->route('project.index');
+    }
+
+    protected function setProjectColor($project){
+        switch ($project->status) {
+            case 'pending':
+                $project->color = 'warning';
+                break;
+            case 'on-going':
+                $project->color = 'primary';
+                break;
+            case 'completed':
+                $project->color = 'success';
+                break;
+            case 'cancelled':
+                $project->color = 'danger';
+                break;
+        }
+        return $project;
     }
 }

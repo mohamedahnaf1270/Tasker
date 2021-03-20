@@ -22,10 +22,10 @@
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Status</label>
     <select name="status" class="form-control" id="exampleFormControlSelect1">
-      <option>Pending</option>
-      <option>Ongoing</option>
-      <option>Completed</option>
-      <option>Cancelled</option>
+      <option value="pending">Pending</option>
+      <option value="on-going">Ongoing</option>
+      <option value="completed">Completed</option>
+      <option value="cancelled">Cancelled</option>
     </select>
   </div>
   <div class="mb-3">
@@ -37,13 +37,13 @@
     </select>
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Color</label>
+    {{-- <label for="exampleFormControlInput1" class="form-label">Color</label>
     <select name="color" class="form-control" id="exampleFormControlSelect1">
         <option>primary</option>
         <option>warning</option>
         <option>danger</option>
         <option>success</option>
-      </select>
+      </select> --}}
       <div class="mt-3">
         <button type="submit" href="{{route('project.create')}}" class="btn btn-primary">Submit</button>
       </div>
