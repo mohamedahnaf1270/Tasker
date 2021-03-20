@@ -22,7 +22,7 @@ class CreateProjectsTable extends Migration
             $table->date('end_date')->nullable();
             $table->string('status')->nullable();
             $table->string('projectmanager_id');//->unsigned();
-            $table->string('color');
+            // $table->string('color');
             //$table->foreign('projectmanager_id')->referances('id')->on('users');
             $table->timestamps();
         });

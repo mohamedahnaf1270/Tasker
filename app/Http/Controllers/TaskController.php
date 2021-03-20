@@ -43,7 +43,7 @@ class TaskController extends Controller
         $task->reporter_id = Auth()->user()->id;
         $task->user_id = $request->user_id;
         $task->name = $request->name;
-        $task->status = "To-do";
+        $task->status = "to-do";
         $task->save();
         return redirect()->route('project.show' , $request->project_id);
     }
