@@ -12,7 +12,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 class Project extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    public $dates=['start_date'];
+    // public $dates=['start_date'];
     use HasFactory;
     public function projectmanager()
     {
